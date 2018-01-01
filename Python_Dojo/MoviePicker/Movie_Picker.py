@@ -18,3 +18,9 @@ print(os.listdir(videoFilesRoot)
 #add constraints for randomization here..
 #function to launch available video player to be loaded here..
 #add randomization functions here...
+
+
+
+
+#please comments wherever necessary
+
