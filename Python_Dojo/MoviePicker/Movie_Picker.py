@@ -1,3 +1,7 @@
+#Created by Kiren Jacob Thomas
+#-----------------------------
+#01/01/2018
+
 #Movie_Picker
 #Selects a random movie or video file within the given constraints
 
