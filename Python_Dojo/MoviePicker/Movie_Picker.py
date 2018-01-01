@@ -13,3 +13,7 @@ videoFilesRoot = raw_input("Please enter general path : ")
 
 videoFilesRoot = videoFilesRoot.replace("'", "")
 print(os.listdir(videoFilesRoot)
+
+#fetch user constraints...
+#add constraints for randomization here..
+#function to launch available video player to be loaded here..
