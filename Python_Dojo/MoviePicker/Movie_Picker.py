@@ -13,3 +13,5 @@ videoFilesRoot = raw_input("Please enter general path : ")
 
 videoFilesRoot = videoFilesRoot.replace("'", "")
 print(os.listdir(videoFilesRoot)
+
+#add randomization functions here...
