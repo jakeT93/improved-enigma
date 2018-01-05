@@ -1,26 +1,56 @@
-#Created by Kiren Jacob Thomas
-#=============================
-#01/01/2018
+# Created by Kiren Jacob Thomas
+# =============================
+# 01/01/2018
 
-#Movie_Picker
-#Selects a random movie or video file within the given constraints
+# Movie_Picker
+# Selects a random movie or video file within the given constraints
 
 import os
+import vlc
+from random import *
+
+VLC_Player_Location = ""
+videoFormats = [".mp4", ".avi", ".mov"]
+#degree = 100
+
+
+def get_random_file(path, deg_of_randomization):
+    error_msg = "Sorry! Try again Later!"
+    degree = 90
+
+    if not os.path.exists(path):
+        return "Not a valid path!!!"
+
+    if str(deg_of_randomization).lower() == 'l':
+        degree = 65
+    elif str(deg_of_randomization).lower() == 'm':
+        degree = 40
+    elif str(deg_of_randomization).lower() == 'h':
+        degree = 15
+
+    for subdir, dirs, files in os.walk(path):
+        for file_name in files:
+            for curr_format in videoFormats:
+                if file_name.find(curr_format) != -1:
+                    if randint(1, 100) < degree:
+                        return os.path.join(subdir, file_name)
+
+    return error_msg
+
 
 videoFilesRoot = ""
 
+# main function starts here...
+
 videoFilesRoot = raw_input("Please enter general path : ")
+degRandomization = raw_input("Enter degree of randomization (L/M/H): ")
 
 videoFilesRoot = videoFilesRoot.replace("'", "")
-print(os.listdir(videoFilesRoot)
 
-#fetch user constraints...
-#add constraints for randomization here..
-#function to launch available video player to be loaded here..
-#add randomization functions here...
+randomFileOut = get_random_file(videoFilesRoot, degRandomization)
 
-
-
-
-#please comments wherever necessary
+if os.path.exists(randomFileOut):
+    print("Starting video : " + randomFileOut)
+    player = vlc.MediaPlayer(randomFileOut)
+    player.play()
 
