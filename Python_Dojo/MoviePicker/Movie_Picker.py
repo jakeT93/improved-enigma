@@ -8,10 +8,21 @@
 import os
 import vlc
 from random import *
+import platform
+import subprocess
 
 VLC_Player_Location = ""
 videoFormats = [".mp4", ".avi", ".mov"]
 #degree = 100
+
+
+def open_file(path):
+    if platform.system() == "Windows":
+        os.startfile(path)
+    elif platform.system() == "Darwin":
+        subprocess.Popen(["open", path])
+    else:
+        subprocess.Popen(["xdg-open", path])
 
 
 def get_random_file(path, deg_of_randomization):
@@ -33,6 +44,7 @@ def get_random_file(path, deg_of_randomization):
             for curr_format in videoFormats:
                 if file_name.find(curr_format) != -1:
                     if randint(1, 100) < degree:
+                    	open_file(subdir)
                         return os.path.join(subdir, file_name)
 
     return error_msg
